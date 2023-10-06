@@ -71,7 +71,7 @@ RSpec.describe LinkedList do
     list.append('blop')
 
     expect(list.to_string).to eq('deep woo shi shu blop')
-    expect(list.find(2, 1)).to eq('shi')
-    expect(list.find(1, 3)).to eq('woo shi shu')
+    expect(list.includes('shi')).to be true
+    expect(list.includes('dop')).to be false
   end
 end

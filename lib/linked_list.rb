@@ -58,10 +58,14 @@ class LinkedList
     previous.next_node = Node.new(data, current)
   end
 
-  def find(index, _quantity)
-    counter = 0
-    until index == counter
+  def includes(data)
+    false if @head.nil?
+    current = @head
+    until current.next_node.nil?
+      return true if current.data == data
 
+      current = current.next_node
     end
+    false
   end
 end
