@@ -1,7 +1,9 @@
-require "./lib/node"
+# frozen_string_literal: true
+
+require 'node'
 
 class LinkedList
-  attr_reader :head
+  attr_reader :head, :count
 
   def initialize(head = nil)
     @head = head
@@ -14,25 +16,17 @@ class LinkedList
       @head = Node.new(data)
     else
       current = @head
-      require 'pry'
-      binding.pry if current.next_node.nil?
-      until current.next_node.nil?
-        current = current.next_node
-      end
+      current = current.next_node until current.next_node.nil?
       current.next_node = Node.new(data)
     end
     @count += 1
   end
 
-  def count
-    @count
-  end
-
   def to_string
-    text = ""
+    text = ''
     current = @head
     until current.nil?
-      text << current.data + " "
+      text << "#{current.data} "
       current = current.next_node
     end
     text.strip
@@ -54,11 +48,10 @@ class LinkedList
     previous.next_node = Node.new(data, current)
   end
 
-  def find(index, quantity)
+  def find(index, _quantity)
     counter = 0
-    current = @head
     until index == counter
-      
+
     end
   end
 end
