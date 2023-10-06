@@ -1,6 +1,6 @@
 # frozen_string_literal: true
 
-require './lib/node'
+require 'node'
 
 RSpec.describe Node do
   it 'exists and has attributes' do

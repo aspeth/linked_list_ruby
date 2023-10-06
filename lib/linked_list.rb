@@ -3,30 +3,40 @@
 require 'node'
 
 class LinkedList
-  attr_reader :head, :count
+  attr_reader :head
 
   def initialize(head = nil)
     @head = head
-    @count = 0
   end
 
-  # this breaks at like 3 elements and goes into an infinite loop
   def append(data)
+    new_node = Node.new(data)
+    current = @head
     if @head.nil?
-      @head = Node.new(data)
+      @head = new_node
     else
-      current = @head
       current = current.next_node until current.next_node.nil?
       current.next_node = Node.new(data)
     end
-    @count += 1
+  end
+
+  def count
+    return 0 if @head.nil?
+
+    current = @head
+    counter = 1
+    until current.next_node.nil?
+      counter += 1
+      current = current.next_node
+    end
+    counter
   end
 
   def to_string
-    text = ''
+    text = String.new
     current = @head
-    until current.nil?
-      text << "#{current.data} "
+    while current
+      text.concat("#{current.data} ")
       current = current.next_node
     end
     text.strip
